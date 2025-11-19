@@ -1,0 +1,6 @@
+playwright>=1.44.0
+pytest-playwright>=0.5.0
+pytest-xdist>=3.6.1
+allure-pytest==2.13.5
+allure-python-commons==2.13.5
+pylint
