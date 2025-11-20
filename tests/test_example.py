@@ -1,6 +1,8 @@
 import re
 from playwright.sync_api import Page, expect
 
+from api.models.transaction_models import CashOutTransactionStatusRequest
+from api.requests.transaction_requests import TransactionRequests
 from pages.main import MainPage
 
 
@@ -14,6 +16,10 @@ def test_has_title(page: Page):
 
 def test_get_started_link(page: Page):
     page.goto("https://playwright.dev/")
+
+    wsdl_url = 'http://example.com'
+    cash_out_transaction_status_request = {'merchantId': 123, 'merchantKeyword': 123, 'referenceNr': 123}
+    soap_results = TransactionRequests(wsdl_url).get_cash_out_transaction_status(**cash_out_transaction_status_request)
 
     # Click the get started link.
     main_page = MainPage(page)
